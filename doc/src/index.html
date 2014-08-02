@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en"><head><title>src/index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="src/index"><meta name="groc-project-path" content="src/index.js"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">src/index.js</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">Backbone</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;backbone&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jquery&#39;</span><span class="p">);</span>
+<span class="nx">Backbone</span><span class="p">.</span><span class="nx">$</span> <span class="o">=</span> <span class="nx">$</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">_</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;underscore&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>init facebook sdk</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">Facebook</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./models/facebook&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>init thistle api</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">ThistleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./models/thistle-api&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">thistle</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ThistleAPI</span><span class="p">();</span>
+
+
+<span class="kd">var</span> <span class="nx">Loader</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./models/Loader&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>init the shipping cart</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">Cart</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./models/cart&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">cart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Cart</span><span class="p">();</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>init the user session</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">Session</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./models/session&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">session</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Session</span><span class="p">();</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">_thistle</span><span class="o">=</span><span class="nx">session</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">LayoutView</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./views/layout&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">layoutView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">LayoutView</span><span class="p">(</span><span class="nx">session</span><span class="p">);</span>
+
+
+<span class="kd">var</span> <span class="nx">Router</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Router</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">routes</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;&quot;</span><span class="o">:</span> <span class="s2">&quot;order&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;account&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sign-in&quot;</span><span class="o">:</span> <span class="s2">&quot;sign-in&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;order&quot;</span><span class="o">:</span> <span class="s2">&quot;order&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;checkout&quot;</span><span class="o">:</span> <span class="s2">&quot;checkout-summary&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;location&quot;</span><span class="o">:</span> <span class="s2">&quot;location&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;*whatever&quot;</span><span class="o">:</span> <span class="s2">&quot;order&quot;</span>
+  <span class="p">},</span>
+  <span class="nx">account</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+
+    <span class="kd">var</span> <span class="nx">AccountView</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./views/account&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">accountView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AccountView</span><span class="p">({</span>
+      <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;#fullPageContent&#39;</span>
+    <span class="p">});</span>
+    <span class="nx">accountView</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+
+
+
+  <span class="p">},</span>
+  <span class="s2">&quot;sign-in&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;sign-in route&#39;</span><span class="p">)</span>
+
+    <span class="kd">var</span> <span class="nx">SignInView</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./views/sign-in&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">signInView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SignInView</span><span class="p">({</span>
+      <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;#fullPageContent&#39;</span>
+    <span class="p">});</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;order&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;order route&#39;</span><span class="p">)</span>
+
+    <span class="nx">thistle</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;juicePairsLoaded&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;PAIRS LOADED EVENT&#39;</span><span class="p">)</span>
+      <span class="kd">var</span> <span class="nx">OrderView</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./views/order&#39;</span><span class="p">);</span>
+      <span class="kd">var</span> <span class="nx">orderView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OrderView</span><span class="p">({</span>
+        <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;#fullPageContent&#39;</span>
+
+      <span class="p">});</span>
+      <span class="nx">orderView</span><span class="p">.</span><span class="nx">juicePairs</span> <span class="o">=</span> <span class="nx">thistle</span><span class="p">.</span><span class="nx">juicePairs</span><span class="p">;</span>
+      <span class="nx">orderView</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">cart</span><span class="p">);</span>
+    <span class="p">})</span>
+
+    <span class="nx">thistle</span><span class="p">.</span><span class="nx">getJuicePairs</span><span class="p">();</span>
+
+
+
+  <span class="p">},</span>
+  <span class="s2">&quot;checkout-summary&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;checkout/summary route&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">products</span> <span class="o">=</span> <span class="nx">thistle</span><span class="p">.</span><span class="nx">getProducts</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;products&#39;</span><span class="p">,</span> <span class="nx">products</span><span class="p">)</span>
+
+
+    <span class="nx">products</span><span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">productList</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">CheckoutSummaryView</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./views/checkout-summary&#39;</span><span class="p">);</span>
+
+      <span class="kd">var</span> <span class="nx">checkoutSummaryView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CheckoutSummaryView</span><span class="p">({</span>
+        <span class="nx">el</span><span class="o">:</span> <span class="s2">&quot;#fullPageContent&quot;</span>
+      <span class="p">});</span>
+      <span class="nx">checkoutSummaryView</span><span class="p">.</span><span class="nx">deliveryFee</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+      <span class="nx">checkoutSummaryView</span><span class="p">.</span><span class="nx">productList</span> <span class="o">=</span> <span class="nx">productList</span><span class="p">;</span>
+      <span class="nx">checkoutSummaryView</span><span class="p">.</span><span class="nx">cart</span> <span class="o">=</span> <span class="nx">cart</span><span class="p">;</span>
+      <span class="nx">checkoutSummaryView</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+
+    <span class="p">});</span>
+
+  <span class="p">},</span>
+  <span class="nx">location</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;location route&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">LocationView</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./views/location&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">locationView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">LocationView</span><span class="p">({</span>
+      <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;#fullPageContent&#39;</span>
+    <span class="p">});</span>
+  <span class="p">},</span>
+  <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;success route&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">SuccessView</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./views/success&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">successView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SuccessView</span><span class="p">({</span>
+      <span class="nx">el</span><span class="o">:</span> <span class="s1">&#39;#fullPageContent&#39;</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">();</span>
+
+<span class="nx">Backbone</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span></div></div></div></div></body></html>
