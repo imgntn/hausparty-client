@@ -1,3 +1,17 @@
+.forgot-email {
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.forgot-row {
+  text-align: center;
+}
+
+.sent-reset-email-text {
+  margin-top: 15px;
+}
 body {
   font-size: 1.5em;
   font-family: 'Questrial', sans-serif;
@@ -58,6 +72,15 @@ a {
   padding-bottom: 40px;
 }
 
+.returning-link {
+  width: 300px;
+  color: white !important;
+}
+
+.first-time-visitor-link {
+  width: 300px;
+}
+
 .main-menu-button {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -65,13 +88,59 @@ a {
 }
 
 .first-time-visitor-form {
-  padding: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
 }
 
 .indirect-connection-row {
   display: none;
 }
 
+.main-nav {
+  padding-top: 10px;
+  height: 120px;
+}
+
+.hausparty-icon {
+  float: left;
+  width: 100px;
+  height: 100px;
+  border: 10px dashed rgb(154,116,166);
+  background: url("styles/images/hausparty.png");
+  background-size: 80px 70px;
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+}
+
+.hausparty-slug {
+  padding-top: 10px;
+  margin-left: 120px;
+}
+.account-password {
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+}
+
+.update-password-button {
+  margin-top: 15px;
+}
+.good-to-go-image {
+  background: url("styles/images/good.png");
+  height: 240px;
+  width: 240px;
+  background-size: 100%;
+}
+
+.welcome-badge {
+  padding: 30px;
+  text-align: center;
+  font-size: 1.5em;
+}
+#sign-in-email {
+  margin-top: 20px;
+}
 
 #sign-in-password,
 #sign-in-email {
@@ -97,6 +166,11 @@ a {
   display: none;
 }
 
-.connect-facebook-button {
-  height: 40px;
+.facebook-login-button {
+  color: white !important;
+}
+
+.sign-in-text,
+.connect-facebook {
+  text-align: center;
 }

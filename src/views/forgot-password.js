@@ -28,7 +28,7 @@ module.exports = Backbone.View.extend({
     var userEmail = $('.forgot-email').val();
 
     if (userEmail !== "" && _t.buttonEnabled===true) {
-    var forgotPassword=hauspartyAPI.forgotPassword(userEmail);
+    var forgotPassword=_hauspartyAPI.forgotPassword(userEmail);
     _t.buttonEnabled=false;
     forgotPassword.done(function(d){
       if(d.status==="success"){
@@ -38,12 +38,12 @@ module.exports = Backbone.View.extend({
       else{
         alert('Problem resetting password');
           _t.buttonEnabled=true;
-          $('.reset-password-button').css('background-color','#82dc50')
+        
       }
         
     })
       console.log('reset password button click', userEmail)
-      $('.reset-password-button').css('background-color', 'gold');
+  
     }
 
   }

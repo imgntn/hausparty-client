@@ -7,8 +7,14 @@ module.exports = Backbone.Model.extend({
   initialize: function() {
     var _t = this;
     console.log('init haus api')
-   // this.set('baseURL', 'https://haus-api.herokuapp.com/api');
-      this.set('baseURL', 'http://localhost:8888/api');
+
+   if(window.location.href.indexOf('localhost')>-1){
+     this.set('baseURL', 'http://localhost:8888/api');
+   }
+   else{
+    this.set('baseURL', 'https://haus-api.herokuapp.com/api');
+   }
+     
     window._hauspartyAPI=_t;
   },
   login: function(username, password) {
@@ -108,7 +114,8 @@ module.exports = Backbone.Model.extend({
   createNewVisitor:function(data){
        var route = "/visitors"
     return $.post(this.get('baseURL') + route, data, function(d) {
-      console.log('create new visitor data is:', d)
+      console.log('create new visitor data is:', d);
+      window._hausPartyUser=d.visitor;
     })
   }
 });

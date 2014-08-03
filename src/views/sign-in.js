@@ -92,7 +92,7 @@ module.exports = Backbone.View.extend({
     var _t = this;
     _hauspartyAPI.loginWithFacebook(fbid).done(function(d) {
       if (d.status === "success") {
-      
+        window._hauspartyUser=d.visitor;
         _t.navigateToReturningPage();
       } else {
         _t.renderBadLogin();

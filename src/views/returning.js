@@ -24,8 +24,11 @@ _t.render()
 
     _t.$el.empty();
 
+var data={
+  name:_hauspartyUser.name
+}
 
-    _t.$el.html(template());
+    _t.$el.html(template(data));
 
 
 

@@ -1,0 +1,14 @@
+.good-to-go-image{
+	background:url('images/good.png');
+	height:240px;
+	width:240px;
+background-size: 100%;
+
+}
+
+.welcome-badge{
+
+	padding:30px;
+	text-align: center;
+	font-size:1.5em;
+}

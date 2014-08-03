@@ -51,6 +51,13 @@ a {
 	padding-bottom: 40px;
 }
 
+.returning-link{
+	width: 300px;
+	color:white !important;
+}
+.first-time-visitor-link{
+width: 300px;
+}
 .main-menu-button{
 	padding-top:40px;
 	padding-bottom:40px;
@@ -58,11 +65,30 @@ a {
 }
 
 .first-time-visitor-form{
-padding:30px;
-
+padding-left:15px;
+padding-right:15px;
+padding-top: 10px;
 }
 
 .indirect-connection-row{
 	display:none;
 }
+.main-nav{
+	padding-top: 10px;
+	height:120px;
+}
+.hausparty-icon{
 
+float: left;
+width: 100px;
+height:100px;
+border: 10px dashed rgb(154,116,166);
+background: url("images/hausparty.png");
+background-size: 80px 70px;
+background-position: 0px 0px;
+background-repeat: no-repeat;
+}
+.hausparty-slug{
+	padding-top:10px;
+	margin-left:120px;
+}

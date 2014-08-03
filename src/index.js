@@ -4,7 +4,7 @@ Backbone.$ = $;
 var _ = require('underscore');
 
 
-var DEBUG = true;
+var DEBUG = false;
 if (!DEBUG) {
   if (!window.console) window.console = {};
   var methods = ["log", "debug", "warn", "info"];
@@ -25,6 +25,7 @@ var LayoutView = require('./views/layout');
 var layoutView = new LayoutView();
 var MainMenuView = require('./views/main-menu');
 var FirstTimeVisitorView = require('./views/first-time-visitor');
+var ReturningView=require('./views/returning');
 var ForgotPasswordView = require('./views/forgot-password');
 var ResetPasswordView = require('./views/reset-password');
 var SignInView = require('./views/sign-in');
@@ -47,7 +48,7 @@ var Router = Backbone.Router.extend({
   routes: {
     "": "mainMenu",
     "firstTimeVisitor": "firstTimeVisitor",
-    "returningVisitor": "returningVisitor",
+    "returning": "returning",
     "forgot": "forgot",
     "signIn": "signIn",
     "reset/:token": "reset",
@@ -75,14 +76,19 @@ var Router = Backbone.Router.extend({
 
 
   },
-  "returningVisitor": function() {
+  "returning": function() {
    var user= checkIfSignedIn();
    if(user!==false){
     
+  var returningView = new ReturningView({
+      el: '#mainContentTarget',
+    });
+
    }
-    console.log('returningVisitor route',user)
-
-
+   else{
+    alert('Please sign in.')
+    Backbone.history.navigate('/signIn',{trigger:true});
+   }
 
   },
   forgot: function() {
@@ -118,6 +124,7 @@ var Router = Backbone.Router.extend({
   },
   signOut:function(){
     delete window._hauspartyUser
+    Backbone.history.navigate('/',{trigger:true});
   }
 });
 

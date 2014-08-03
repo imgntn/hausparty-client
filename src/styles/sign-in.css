@@ -1,5 +1,5 @@
 #sign-in-email{
-
+margin-top:20px;
 }
 #sign-in-password,#sign-in-email{
 	width:100%;
@@ -24,6 +24,12 @@
 	display:none;
 }
 
-.connect-facebook-button{
-height:40px;	
+.facebook-login-button{
+color:white !important;
+
+}
+
+.sign-in-text,.connect-facebook{
+	text-align: center;
+
 }

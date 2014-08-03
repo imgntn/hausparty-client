@@ -61,7 +61,10 @@ module.exports = Backbone.View.extend({
   gatherFormData: function() {
     var _t = this;
     var form = $('.first-time-visitor-form')
-
+    function checkFacebookID(){
+      if(typeof _fb.get('me')!=="undefined"){return _fb.get('me').id}
+        else{return ""}
+    }
     var formData = {
       name: $('#name').val(),
       email: $('#email').val(),
@@ -70,7 +73,7 @@ module.exports = Backbone.View.extend({
       about: $('#about').val(),
       password: document.getElementById('password').value,
       newsletter: document.getElementById("newsletter-0").checked,
-      facebookID:_fb.get('me').id
+      facebookID:checkFacebookID()
     }
     console.log('formData', formData)
     return formData
@@ -155,6 +158,8 @@ module.exports = Backbone.View.extend({
     createNewVisitor.done(function(d){
       if(d.status==="success"){
         console.log('created new visitor')
+        window._hauspartyUser=d.visitor;
+        window._hauspartyUser.name=$('#name').val()
         Backbone.history.navigate('/returning',{
           trigger:true
         })

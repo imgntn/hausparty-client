@@ -27,12 +27,12 @@ module.exports = Backbone.View.extend({
     if (password !== "" && confirmPassword !== "") {
       if (password === confirmPassword) {
         //submit
-        var resetPassword = hauspartyAPI.updatePassword(password, _t.resetToken);
+        var resetPassword = _hauspartyAPI.updatePassword(password, _t.resetToken);
 
 
         resetPassword.done(function(d) {
           if (d.status === "success") {
-            Backbone.history.navigate("#order", {
+            Backbone.history.navigate("#signIn", {
               trigger: true
             })
           } else {
