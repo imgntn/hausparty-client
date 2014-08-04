@@ -36,7 +36,7 @@ gulpfile.js --> points to /gulp tasks <br>
 /spec --> tests (minimal)<br>
 /styles -->  css controls how things look<br>
 /styles/images --> where to keep images<br>
-/styles/images --> where to keep fonts<br>
+/styles/fonts --> where to keep fonts<br>
 /templates --> rendered by views<br>
 /views  --> put content on the page<br>
 index.js --> the main app.  contains the router.
